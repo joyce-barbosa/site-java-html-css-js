@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+
+        .led-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(20, 1fr);
+            grid-template-rows: repeat(20, 1fr);
+            z-index: 1;
+        }
+
+        .led {
+            width: 10px;
+            height: 10px;
+            background-color: #ff8000;
+            border-radius: 50%;
+            animation: blink 2s infinite;
+        }
+
+        .led:nth-child(odd) {
+            animation-delay: 1s;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .floating-image {
+            position: relative;
+            z-index: 2;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        footer img {
+            width: 35px;
+            height: 35px;
+            border: 5px solid rgb(255, 111, 0);
+            border-radius: 50%;
+        }
+
+        footer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: white;
+            padding: 10px 20px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .top-right-button {
+            position: absolute;
+            top: 20px;
+            /* Distância do topo */
+            right: 20px;
+            /* Distância da direita */
+            padding: 10px 20px;
+            background-color: #ff8800;
+            /* Cor do botão */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            z-index: 4;
+        }
+
+        .top-right-button:hover {
+            background-color: #ffa600;
+        }
+
+        .bottom-right-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #ff8000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            z-index: 4;
+        }
+
+        .bottom-right-button:hover {
+            background-color: #ffa600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="led-background">
+        <div class="led"></div>
+        <div class="led"></div>
+        <div class="led"></div>
+    </div>
+
+    <img src="img/logojava.webp" alt="Imagem Flutuante" class="floating-image">
+
+    <script>
+        const ledBackground = document.querySelector('.led-background');
+        for (let i = 0; i < 400; i++) {
+            const led = document.createElement('div');
+            led.className = 'led';
+            ledBackground.appendChild(led);
+        }
+    </script>
+    <a href="index.html" class="top-right-button">Sobre a Linguagem</a>
+    <a href="exercicios.html" class="bottom-right-button">Exercícios</a>
+
+    <div>
+        <footer>
+            <img src="img/logojava.webp">
+        </footer>
+    </div>
+</body>
+
+</html>
